@@ -1,3 +1,3 @@
-# flutter_application_1
+# Eventec - flutter version
 
 A new Flutter project.
