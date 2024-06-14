@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'eventosPage.dart';
+import 'usuario.dart';  // Importa a definição do modelo de usuário e a lista de usuários
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -69,30 +71,46 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-  onPressed: () {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => EventosPage()),
-      );
-    }
-  },
-  child: Text(
-    'Entrar',
-    style: TextStyle(color: Colors.white),
-  ),
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.white, backgroundColor: Colors.blue,
-    elevation: 2,
-  ),
-),
-
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      Usuario? usuario = usuarios.firstWhereOrNull(
+                        (user) => user.email == _email && user.senha == _password,
+                      );
+                      if (usuario != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EventosPage()),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('E-mail ou senha incorretos')),
+                        );
+                      }
+                    }
+                  },
+                  child: Text('Entrar'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, backgroundColor: Colors.blue,
+                    elevation: 2,
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+extension FirstWhereOrNullExtension<E> on List<E> {
+  E? firstWhereOrNull(bool Function(E) test) {
+    for (E element in this) {
+      if (test(element)) {
+        return element;
+      }
+    }
+    return null;
   }
 }

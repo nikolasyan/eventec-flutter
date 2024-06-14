@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'eventosPage.dart';
+import 'usuario.dart';
+import 'main.dart';
 
 class CadastroPage extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _CadastroPageState extends State<CadastroPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text(
-                  'Registre-se e Explore Eventos',
+                  'Registre-se e crie Eventos!',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -91,16 +92,15 @@ class _CadastroPageState extends State<CadastroPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      Navigator.push(
+                      usuarios.add(Usuario(ra: _ra, email: _email, senha: _password));
+                      Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => EventosPage()),
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        (Route<dynamic> route) => false,
                       );
                     }
                   },
-                  child: Text(
-                    'Cadastrar',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text('Cadastrar'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                   ),
