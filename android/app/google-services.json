@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "754609968387",
+    "project_id": "eventecflutter",
+    "storage_bucket": "eventecflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754609968387:android:49e7eb412af6c95a2b4536",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754609968387-pjp2gi3talj7flnipo8kqllaus7stpb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCexJcoeqVNHVSk82TMmoIL_KA-t542fr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754609968387-pjp2gi3talj7flnipo8kqllaus7stpb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
